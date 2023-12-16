@@ -7,45 +7,12 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-import os
+
 
 # In[68]:
 
 
-current_directory = os.getcwd()
-
-#Construct a relative path 
-
-relative_path = os.path.join(current_directory, 'data', 'Poly 2023 LAS Reference.xlsx')
-
-
-
-df =dict()
-sheet_names = pd.ExcelFile(relative_path).sheet_names
-
-for sheet in sheet_names:
-    df[sheet]=pd.read_excel(relative_path,sheet_name=sheet)
-    df[sheet]['Poly'] = sheet
-
-df= pd.concat(df, ignore_index=True)
-
-
-# In[71]:
-
-
-df.columns = df.columns.str.strip()
-
-
-# In[84]:
-
-
-df['Poly-Course']= df['Course Name']+" "+"("+ df['MOE Course Code']+")"
-
-df.sort_values(by='Poly-Course',inplace=True)
-
-
-
-# In[78]:
+df = pd.read_pickle('data.pickle')
 
 
 # Sample DataFrame
