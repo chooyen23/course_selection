@@ -34,7 +34,7 @@ if result_button:
         st.write(f"**Course:** {row['Poly']} {row['Poly-Course']}, **Range of Aggregate Score:** {row['2023 Range of Aggregate Score (Net)']}")
         
 else:
-    st.warning('Please select at least one item.')
+    st.warning('Please select at least one item from the drop downlist.')
 
 # In[79]:
 
