@@ -9,19 +9,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 
-#Hide the github icon in streamlit cloud
-st.markdown(
-    """
-    <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 # In[68]:
 
@@ -34,8 +22,10 @@ df = pd.read_pickle('data.pickle')
 # Streamlit App
 st.title('2024 Poly Course Comparison')
 
-st.write("The number of courses for each Polytechnic")
+st.write("The number of courses for each Polytechnic:")
+df.dropna(inplace=True)
 table = df.groupby(by=['Poly'])['Course Name'].size()
+table = table.rename('Courses')
 table
 
 # Multiselect to choose multiple items
@@ -60,6 +50,19 @@ else:
 df.set_index('MOE Course Code',inplace=True)
 #df
 
+#Hide the github icon in streamlit cloud
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # In[ ]:
 
