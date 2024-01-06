@@ -20,6 +20,10 @@ df = pd.read_pickle('data.pickle')
 # Streamlit App
 st.title('2024 Poly Course Comparison')
 
+st.write("The number of courses for each Polytechnic")
+table = df.groupby(by=['Poly'])['Course Name'].size()
+table
+
 # Multiselect to choose multiple items
 selected_items = st.multiselect('Choose Course:', df['Poly-Course'])
 
@@ -40,7 +44,7 @@ else:
 
 
 df.set_index('MOE Course Code',inplace=True)
-df
+#df
 
 
 # In[ ]:
