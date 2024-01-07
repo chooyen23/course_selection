@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+#Hide the github icon in streamlit cloud
+
 
 # In[44]:
 
@@ -9,7 +11,22 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 
+# Hide the GitHub ribbon and other top menu items
+st.markdown("""
+<style>
+/* This hides the hamburger menu (top right) */
+header {visibility: hidden;}
 
+/* This hides the GitHub corner icon */
+.css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+.styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+.viewerBadge_text__1JaDK {
+    display: none !important;
+}
+
+/* Additional elements can be hidden by adding their classes here */
+</style>
+""", unsafe_allow_html=True)
 
 # In[68]:
 
@@ -26,7 +43,20 @@ st.write("The number of courses for each Polytechnic:")
 df.dropna(inplace=True)
 table = df.groupby(by=['Poly'])['Course Name'].size()
 table = table.rename('Courses')
-table
+
+#Inject Custom CSS with st.markdown
+
+st.markdown("""
+<style>
+table, th, td {
+    table-layout: auto !important;
+    width: auto !important;
+    white-space: nowrap;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.table(table)
 
 # Multiselect to choose multiple items
 selected_items = st.multiselect('Choose Course:', df['Poly-Course'])
@@ -50,19 +80,7 @@ else:
 df.set_index('MOE Course Code',inplace=True)
 #df
 
-#Hide the github icon in streamlit cloud
-st.markdown(
-    """
-    <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 # In[ ]:
 
