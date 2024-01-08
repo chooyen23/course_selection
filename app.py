@@ -11,6 +11,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 
+
 # Hide the GitHub ribbon and other top menu items
 st.markdown("""
 <style>
@@ -37,7 +38,8 @@ df = pd.read_pickle('data.pickle')
 # Sample DataFrame
 
 # Streamlit App
-st.title('2024 Poly Course Aggregate Score Comparison')
+st.title('Poly Course Aggregate Score Comparison')
+st.subheader('The comparison is based on 2023 Aggregate Scores.')
 
 st.write("The number of courses for each Polytechnic:")
 df.dropna(inplace=True)
