@@ -48,6 +48,7 @@ st.sidebar.info(
 st.write("The number of courses for each Polytechnic:")
 df.dropna(inplace=True)
 table = df.groupby(by=['Poly'])['Course Name'].size()
+
 table = table.rename('Courses')
 
 #Inject Custom CSS with st.markdown
