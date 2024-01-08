@@ -39,7 +39,7 @@ df = pd.read_pickle('data.pickle')
 
 # Streamlit App
 st.title('Poly Course Aggregate Score Comparison')
-st.subheader('The comparison is based on 2023 Aggregate Scores.')
+st.write('The comparison is based on 2023 Aggregate Scores.')
 
 st.write("The number of courses for each Polytechnic:")
 df.dropna(inplace=True)
